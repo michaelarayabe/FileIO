@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -73,10 +75,45 @@ public class SortingAlgo {
             }
         }
 
-
-
-
     }
+
+    // creating summary file for sorted
+    public static void createSummary(File files) throws IOException {
+
+        //create a list with the sorted files showing the directory
+        List<File> sortedFiles = new ArrayList<>();
+        SortingAlgo.listOfUnsortedFiles(files, sortedFiles);
+        Set<String> extension = new HashSet<>();
+        String pathSum = "/summary.txt";
+
+        for (File file : sortedFiles) {
+            extension.add(getExtension(file.getName()));
+        }
+
+        //formatting for summary
+        List<String> summary = new ArrayList<>();
+        summary.add(String.format("%-50s%s%13s%24s%13s%10s", "name","|" ,"readable", "|", "writeable", "|"));
+
+        for (String ext : extension) {
+            summary.add("\n" );
+            summary.add(ext + ":");
+            summary.add("--------");
+            for (File file : sortedFiles) {
+                if (ext.equals(file.getParentFile().getName())) {
+                    summary.add(String.format("%-50s%s%13s%25s%10s%13s", file.getName(),"|" ,file.canRead() ? "/" : "x","|",
+                            file.canWrite() ? "/" : "x", "|"));
+                }
+            }
+        }
+
+        //Creating summary, check if it exists first!
+        if (!Paths.get(files + pathSum).toFile().exists()) {
+            Files.createFile(Paths.get(files + pathSum));
+        }
+        Files.write(Paths.get(files + pathSum), summary);
+    }
+
+
 
 
 

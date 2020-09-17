@@ -20,6 +20,7 @@ public class App {
 
         SortingAlgo.listOfUnsortedFiles(unsorted,allFiles);
         SortingAlgo.createFolder(allFiles,sorted);
+        SortingAlgo.createSummary(sorted);
 
     }
 }
