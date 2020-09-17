@@ -1,5 +1,7 @@
 package App;
 
+import Service.SortingAlgo;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,8 @@ public class App {
         File sorted = new File("sorted");
 
 
+        SortingAlgo.listOfUnsortedFiles(unsorted,allFiles);
+        SortingAlgo.createFolder(allFiles,sorted);
 
     }
 }

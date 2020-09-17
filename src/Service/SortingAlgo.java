@@ -1,7 +1,10 @@
 package Service;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SortingAlgo {
 
@@ -36,6 +39,26 @@ public class SortingAlgo {
         }
         return extension;
     }
+
+
+
+    public static void createFolder(List<File> files, File sorted){
+
+        Set<String> newFolder = new HashSet<>();
+
+        for(File file : files){
+            newFolder.add(getExtension(file.getName()));
+        }
+
+        // Create directories
+        for(String str : newFolder){
+            if(!new File(sorted + "/" + str).exists()){
+                new File(sorted + "/" + str).mkdir();
+            }
+        }
+
+    }
+
 
 
 
