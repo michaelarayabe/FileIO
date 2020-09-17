@@ -13,9 +13,10 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
-# Unsorted files
+# Sorted and Unsorted files
 
 unsorted/
+sorted/
 
 # Generated files
 .idea/**/contentModel.xml

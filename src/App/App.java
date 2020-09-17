@@ -1,8 +1,20 @@
 package App;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("");
+
+        //Set up our sorted and unsorted directories
+
+        List<File> allFiles = new ArrayList<>();
+        File unsorted = new File("unsorted");
+        File sorted = new File("sorted");
+
+
+
     }
 }
