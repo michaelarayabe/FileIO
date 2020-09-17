@@ -1,6 +1,8 @@
 package Service;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.List;
@@ -42,7 +44,7 @@ public class SortingAlgo {
 
 
 
-    public static void createFolder(List<File> files, File sorted){
+    public static void createFolder(List<File> files, File sorted) throws IOException {
 
         Set<String> newFolder = new HashSet<>();
 
@@ -56,6 +58,23 @@ public class SortingAlgo {
                 new File(sorted + "/" + str).mkdir();
             }
         }
+
+        // check if files doesn't exists, if so copy it, if not Files have been copied before!
+        for (File file : files) {
+            if (getExtension(file.getName()) != null) {
+                Path source = file.toPath();
+                Path destination = sorted.toPath().resolve(getExtension(file.getName())).resolve(file.getName());
+                if (!destination.toFile().exists()) {
+                    Files.copy(source, destination);
+                } else{
+                    System.out.println("Files already copied!");
+                    continue;
+                }
+            }
+        }
+
+
+
 
     }
 
