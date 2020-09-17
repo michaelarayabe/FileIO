@@ -1,7 +1,5 @@
 package App;
-
 import Service.SortingAlgo;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,10 +15,10 @@ public class App {
         File unsorted = new File("unsorted");
         File sorted = new File("sorted");
 
-
         SortingAlgo.listOfUnsortedFiles(unsorted,allFiles);
         SortingAlgo.createFolder(allFiles,sorted);
         SortingAlgo.createSummary(sorted);
+        System.out.println("Files copied and summary.txt generated");
 
     }
 }

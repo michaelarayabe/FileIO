@@ -27,14 +27,7 @@ public class SortingAlgo {
         }
     }
 
-    /*
-    Todos:
-
-    grab the extension of file, and add to collection then create a directory based on it
-     */
-
     // Extension of file
-
     public static String getExtension (String file){
 
         String extension = null;
@@ -63,14 +56,12 @@ public class SortingAlgo {
 
         // check if files doesn't exists, if so copy it, if not Files have been copied before!
         for (File file : files) {
+
             if (getExtension(file.getName()) != null) {
                 Path source = file.toPath();
                 Path destination = sorted.toPath().resolve(getExtension(file.getName())).resolve(file.getName());
                 if (!destination.toFile().exists()) {
                     Files.copy(source, destination);
-                } else{
-                    System.out.println("Files already copied!");
-                    continue;
                 }
             }
         }
@@ -112,15 +103,4 @@ public class SortingAlgo {
         }
         Files.write(Paths.get(files + pathSum), summary);
     }
-
-
-
-
-
-
-
-
-
-
-
 }
