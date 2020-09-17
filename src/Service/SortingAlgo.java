@@ -20,6 +20,23 @@ public class SortingAlgo {
         }
     }
 
+    /*
+    Todos:
+
+    grab the extension of file, and add to collection then create a directory based on it
+     */
+
+    // Extension of file
+
+    public static String getExtension (String file){
+
+        String extension = null;
+        if(file != null){
+            extension = file.substring(file.lastIndexOf('.') + 1);
+        }
+        return extension;
+    }
+
 
 
 
